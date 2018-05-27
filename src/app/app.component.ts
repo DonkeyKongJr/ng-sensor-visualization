@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SensorDataService } from './servives/sensor-data.service';
+import { SensorDataService } from './services/sensor-data.service';
 import { SensorData } from './entities/sensor-data.mode';
+import { DataChartService } from './services/data-chart.service';
 
 @Component({
   selector: 'app-root',
@@ -11,23 +12,35 @@ export class AppComponent implements OnInit {
   title = 'Raspberry Pi Sensor Measurements';
   sensorData: SensorData;
 
-  constructor(private readonly sensorDataService: SensorDataService) { }
+  constructor(
+    private readonly sensorDataService: SensorDataService,
+    private dataChartService: DataChartService) { }
 
   ngOnInit() {
-    this.getData();
+    this.getDataPeriodically();
   }
 
   public reloadData() {
     this.sensorData.temp = '';
     this.sensorData.humidity = '';
-    this.getData()
+    this.getInitialData()
   }
 
-  private getData() {
+  private getInitialData() {
     this.sensorDataService.getSensorData().subscribe(data => {
       this.sensorData = data;
       console.log('humidity is ' + data.humidity);
       console.log('temp is ' + data.temp);
     });
   }
+
+  private getDataPeriodically() {
+    setInterval(() => {
+      this.sensorDataService.getSensorData().subscribe(data => {
+        this.sensorData = data;
+        this.dataChartService.updateSensorDataList(this.sensorData);
+      });
+    }, 10000);
+  }
 }
+ 
