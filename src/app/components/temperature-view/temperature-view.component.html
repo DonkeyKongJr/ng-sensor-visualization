@@ -1,13 +1,13 @@
-<dx-chart [dataSource]="dataChartService.getSensorData" >
+<dx-chart [dataSource]="dataChartService.getSensorData">
+  <dxi-value-axis [max]=40 [min]=-20></dxi-value-axis>
   <dxi-series valueField="temp" name="Temperature"></dxi-series>
-  <dxo-common-series-settings #seriesSettings
-  argumentField="timestamp">
-</dxo-common-series-settings>
+  <dxo-common-series-settings #seriesSettings argumentField="timestamp">
+  </dxo-common-series-settings>
 </dx-chart>
-
-<dx-chart [dataSource]="dataChartService.getSensorData" >
+<hr>
+<dx-chart [dataSource]="dataChartService.getSensorData">
+  <dxi-value-axis [max]=100 [min]=0></dxi-value-axis>
   <dxi-series valueField="humidity" name="Humidity"></dxi-series>
-  <dxo-common-series-settings #seriesSettings
-  argumentField="timestamp">
-</dxo-common-series-settings>
+  <dxo-common-series-settings #seriesSettings argumentField="timestamp">
+  </dxo-common-series-settings>
 </dx-chart>
