@@ -1,16 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { SensorData } from '../../entities/sensor-data.mode';
-import { DataChartService } from '../../services/data-chart.service';
+import { Component, OnInit } from "@angular/core";
+import { AngularFirestore } from "angularfire2/firestore";
+import { FireSensorData } from "../../entities/fire-sensor-data.model";
 
 @Component({
-  selector: 'app-temperature-view',
-  templateUrl: './temperature-view.component.html',
-  styleUrls: ['./temperature-view.component.css']
+  selector: "app-temperature-view",
+  templateUrl: "./temperature-view.component.html",
+  styleUrls: ["./temperature-view.component.css"]
 })
 export class TemperatureViewComponent implements OnInit {
-  public sensorData: Array<SensorData> = [];
-  constructor(public dataChartService: DataChartService) { }
+  public fireSensorData: FireSensorData[] = [];
+
+  constructor(private readonly db: AngularFirestore) {
+  }
 
   ngOnInit() {
+    this.db.collection("sensordata")
+    .valueChanges()
+    .subscribe((data: FireSensorData[]) => {
+      this.fireSensorData = data;
+    });
   }
 }

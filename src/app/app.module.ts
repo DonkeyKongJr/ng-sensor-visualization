@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import {DxChartModule} from 'devextreme-angular';
+import { DxChartModule } from 'devextreme-angular';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { AppComponent } from './app.component';
-import { SensorDataService } from './services/sensor-data.service';
 import { TemperatureViewComponent } from './components/temperature-view/temperature-view.component';
-import { DataChartService } from './services/data-chart.service';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -17,9 +18,11 @@ import { DataChartService } from './services/data-chart.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    DxChartModule
+    DxChartModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
-  providers: [SensorDataService, DataChartService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
