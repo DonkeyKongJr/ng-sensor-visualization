@@ -1,4 +1,4 @@
-<dx-chart [dataSource]="fireSensorData" scrollingMode="all" zoomingMode="all">
+<dx-chart [dataSource]="fireSensorData" scrollingMode="all" zoomingMode="all" (onDone)="zoom($event)">
   <dxi-value-axis [max]=40 [min]=-20></dxi-value-axis>
   <dxi-series valueField="temperature" name="Temperature"></dxi-series>
   <dxo-common-series-settings #seriesSettings argumentField="timestamp">
@@ -7,7 +7,7 @@
 </dx-chart>
 <hr>
 <br>
-<dx-chart [dataSource]="fireSensorData" scrollingMode="all" zoomingMode="all">
+<dx-chart [dataSource]="fireSensorData" scrollingMode="all" zoomingMode="all" (onDone)="zoom($event)">
   <dxi-value-axis [max]=100 [min]=0></dxi-value-axis>
   <dxi-series valueField="humidity" name="Humidity"></dxi-series>
   <dxo-common-series-settings #seriesSettings argumentField="timestamp">
