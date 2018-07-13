@@ -8,9 +8,8 @@ describe('TemperatureViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TemperatureViewComponent ]
-    })
-    .compileComponents();
+      declarations: [TemperatureViewComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
