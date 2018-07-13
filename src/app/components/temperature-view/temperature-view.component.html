@@ -1,16 +1,16 @@
-
-
-<dx-chart [dataSource]="fireSensorData">
+<dx-chart [dataSource]="fireSensorData" scrollingMode="all" zoomingMode="all">
   <dxi-value-axis [max]=40 [min]=-20></dxi-value-axis>
   <dxi-series valueField="temperature" name="Temperature"></dxi-series>
   <dxo-common-series-settings #seriesSettings argumentField="timestamp">
   </dxo-common-series-settings>
+  <dxo-scroll-bar [visible]="true"></dxo-scroll-bar>
 </dx-chart>
 <hr>
-<br >
-<dx-chart [dataSource]="fireSensorData">
+<br>
+<dx-chart [dataSource]="fireSensorData" scrollingMode="all" zoomingMode="all">
   <dxi-value-axis [max]=100 [min]=0></dxi-value-axis>
   <dxi-series valueField="humidity" name="Humidity"></dxi-series>
   <dxo-common-series-settings #seriesSettings argumentField="timestamp">
   </dxo-common-series-settings>
+  <dxo-scroll-bar [visible]="true"></dxo-scroll-bar>
 </dx-chart>

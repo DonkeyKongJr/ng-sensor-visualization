@@ -1,5 +1,5 @@
-export class FireSensorData{
-    temperature:string;
-    humidity:string;
-    timestamp:Date;
+export class FireSensorData {
+  temperature: string;
+  humidity: string;
+  timestamp: any;
 }

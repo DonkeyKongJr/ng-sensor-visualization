@@ -9,12 +9,8 @@ import { AppComponent } from './app.component';
 import { TemperatureViewComponent } from './components/temperature-view/temperature-view.component';
 import { environment } from '../environments/environment';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    TemperatureViewComponent
-  ],
+  declarations: [AppComponent, TemperatureViewComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -25,4 +21,4 @@ import { environment } from '../environments/environment';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
